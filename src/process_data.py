@@ -29,11 +29,11 @@ def remove_accents(letter):
     return unicodedata.normalize("NFD", letter).encode("ascii", "ignore").decode()
 
 text = ""
-with open('../data/before-preprocessing/text2_3.txt', 'r') as f:
+with open('../data/before-preprocessing/alice_en.txt', 'r') as f:
     text = f.read()
 
 
 preprocess_text_ = preprocess_text(text)
 
-with open('../data/after-preprocessing/text2_3.txt', 'w') as f:
+with open('../data/after-preprocessing/alice_en.txt', 'w') as f:
     f.write(preprocess_text_)
