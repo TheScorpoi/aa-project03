@@ -3,8 +3,7 @@ import random
 import time
 from prettytable import PrettyTable
 
-#K_VALUES = [3, 5, 10]
-K_VALUES = [3]
+K_VALUES = [3, 5, 10]
 
 def exact_counter(text: str) -> list:
     letters_freq = {}
@@ -37,7 +36,7 @@ def approximate_counter(text: str) -> list:
     sorted_counts = sorted(counts.items(), key=lambda x: x[1], reverse=True)
     return sorted_counts
 
-def count_letters_lossy(text: str, threshold=0.00001, k=None) -> list:
+def count_letters_lossy(text: str, threshold=0.00000000001, k=None) -> list:
     counts = {}
     error = 1
     for letter in text:
@@ -78,7 +77,7 @@ def calculate_error_metrics(error_dict : dict) -> None:
 if __name__ == "__main__":
 
     text = None
-    with open('../data/after-preprocessing/alice_fr.txt', 'r') as f:
+    with open('../data/after-preprocessing/nietzsche.txt', 'r') as f:
         text = f.read()
 
     table = PrettyTable()
@@ -102,12 +101,9 @@ if __name__ == "__main__":
         #print("Most frequent letters witk k = ", i, " -- ", count_letters_lossy(text, k=i))
         for i in count_letters_lossy(text, k=i):
             if i[0] in [j[0] for j in approximate_counter_]:
-                print(i[0], " - ", i[1], " - ", [j[1] for j in approximate_counter_ if j[0] == i[0]][0])
+                print(i[0], " - ", i[1])
+        print("\n\n")
 
-            
-    print(approximate_counter_)
-    print(count_letters_lossy_)
-        
     #! comport a ordem das letras do aproximate counter e do lossy counter
     
     for i in range(len(exact_counter(text))):
@@ -116,7 +112,7 @@ if __name__ == "__main__":
     table.add_row(["---------", "-----------", "-------------", "-----------"])
     table.add_row(["--TIME--", "{:.3f}".format(exac_counter_time), "{:.3f}".format(approximate_counter_time), "{:.3f}".format(count_letters_lossy_time)])
     
-    with open("../results/alice_en.txt", "w") as f:
+    with open("../results/nietzsche.txt", "w") as f:
         f.write(table.get_string())
         print(table)
         
@@ -160,19 +156,6 @@ if __name__ == "__main__":
     print(table_errors)
     
     
-    with open("../results/alice_en.txt", "a") as f:
+    with open("../results/nietzsche.txt", "a") as f:
         f.write("\n\n\n")
         f.write(table_errors.get_string())
-        
-        
-    ##########
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
