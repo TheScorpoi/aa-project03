@@ -40,6 +40,10 @@ Para fazer a contagem das letras nas obras literárias:
 python3 main.py
 ```
 
+## Resultados
+
+A tabelas dos resultados pode ser consultada no diretório [results](./results)
+
 ## Relatório
 
 O projeto é acompanahdo por um relatório e o memso pode ser consultado no diretório [report](./report/relatorio.pdf)
